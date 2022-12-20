@@ -7,6 +7,7 @@ import SearchBar from './components/SearchBar';
 
 const App = () => {
     const [fontsLoaded, setFontsLoaded] = useState(false);
+    const [searchInput, setSearchInput] = useState('');
 
     useEffect(() => {
         async function loadFonts() {
@@ -31,7 +32,10 @@ const App = () => {
                     <Text style={styles.largeText}>Movie Finder</Text>
                 </View>
                 <View style={styles.mainSection}>
-                    <SearchBar />
+                    <SearchBar
+                        setSearchInput={(input) => setSearchInput(input)}
+                    />
+                    <Text>{searchInput}</Text>
                 </View>
                 <View style={styles.footer}>
                     <TMDBLogo height={50} width={100} />
