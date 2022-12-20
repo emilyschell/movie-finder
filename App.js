@@ -3,6 +3,7 @@ import * as Font from 'expo-font';
 import { Text, View, Image, ActivityIndicator } from 'react-native';
 import { styles, colors } from './assets/styles';
 import TMDBLogo from './components/TMDB-Logo';
+import SearchBar from './components/SearchBar';
 
 const App = () => {
     const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -30,7 +31,7 @@ const App = () => {
                     <Text style={styles.largeText}>Movie Finder</Text>
                 </View>
                 <View style={styles.mainSection}>
-                    <Text>Main Section</Text>
+                    <SearchBar />
                 </View>
                 <View style={styles.footer}>
                     <TMDBLogo height={50} width={100} />

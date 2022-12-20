@@ -38,6 +38,26 @@ export const styles = StyleSheet.create({
     mainSection: {
         flex: 3,
     },
+    textInput: {
+        backgroundColor: colors.bgTextInput,
+        fontFamily: 'Roboto',
+        fontSize: 24,
+        height: 40,
+        paddingLeft: 5,
+        width: 275,
+    },
+    searchBar: {
+        backgroundColor: colors.bgTextInput,
+        borderRadius: 25,
+        borderColor: colors.borderColor,
+        borderWidth: 1,
+        flexDirection: 'row',
+        height: 50,
+        marginTop: 10,
+        paddingLeft: 10,
+        paddingVertical: 5,
+        width: 350,
+    },
     footer: {
         alignItems: 'center',
         backgroundColor: colors.bgFooter,
