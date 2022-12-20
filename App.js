@@ -1,20 +1,53 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState, useEffect } from 'react';
+import * as Font from 'expo-font';
+import { Text, View, Image, ActivityIndicator } from 'react-native';
+import { styles, colors } from './assets/styles';
+import TMDBLogo from './components/TMDB-Logo';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const App = () => {
+    const [fontsLoaded, setFontsLoaded] = useState(false);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    useEffect(() => {
+        async function loadFonts() {
+            await Font.loadAsync({
+                Roboto: require('./assets/fonts/RobotoCondensed-Light.ttf'),
+                Rubik: require('./assets/fonts/RubikVinyl-Regular.ttf'),
+            });
+            setFontsLoaded(true);
+        }
+        loadFonts();
+    }, []);
+
+    if (fontsLoaded) {
+        return (
+            <View style={styles.container}>
+                <View style={styles.header}>
+                    <Image
+                        style={styles.headerImage}
+                        source={require('./assets/images/Movie-Projector-Icon.png')}
+                        resizeMode='contain'
+                    />
+                    <Text style={styles.largeText}>Movie Finder</Text>
+                </View>
+                <View style={styles.mainSection}>
+                    <Text>Main Section</Text>
+                </View>
+                <View style={styles.footer}>
+                    <TMDBLogo height={50} width={100} />
+                    <Text style={styles.footerText}>
+                        This product uses the TMDB API but is not endorsed or
+                        certified by TMDB.
+                    </Text>
+                </View>
+            </View>
+        );
+    } else {
+        return (
+            <View style={styles.container}>
+                <ActivityIndicator size='large' color={colors.iconColor} />
+            </View>
+        );
+    }
+};
+
+export default App;
