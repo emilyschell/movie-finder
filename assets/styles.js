@@ -64,15 +64,71 @@ export const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
-        maxHeight: 100,
+        maxHeight: 75,
         padding: 10,
         width: '100%',
     },
     footerText: {
         color: colors.textColorFooter,
         fontFamily: 'Roboto',
-        fontSize: 20,
+        fontSize: 16,
         flex: 2,
         marginLeft: 25,
+    },
+    scrollView: {
+        width: 300,
+    },
+    movieCard: {
+        alignItems: 'center',
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        margin: 5,
+        width: 330,
+    },
+    googleLogo: {
+        alignSelf: 'flex-end',
+        height: 40,
+        margin: 0,
+        padding: 0,
+        width: 40,
+    },
+    defaultText: {
+        color: colors.textColorDefault,
+        fontFamily: 'Roboto',
+        fontSize: 24,
+    },
+    dataBlock1: {
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifySelf: 'flex-start',
+    },
+    dataBlock2: {
+        alignItems: 'center',
+        flexDirection: 'row',
+    },
+    title: {
+        fontFamily: 'RobotoBold',
+        maxWidth: 150,
+    },
+    year: {
+        fontFamily: 'RobotoItalic',
+    },
+    notFoundText: {
+        margin: 10,
+    },
+    rating: {
+        color: colors.textColorDefault,
+        fontFamily: 'Roboto',
+        fontSize: 30,
+        margin: 15,
+    },
+    badRating: {
+        color: '#f00',
+    },
+    poster: {
+        height: 75,
+        margin: 5,
+        width: 50,
     },
 });

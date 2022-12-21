@@ -15,6 +15,8 @@ const App = () => {
             await Font.loadAsync({
                 Roboto: require('./assets/fonts/RobotoCondensed-Light.ttf'),
                 Rubik: require('./assets/fonts/RubikVinyl-Regular.ttf'),
+                RobotoBold: require('./assets/fonts/RobotoCondensed-Bold.ttf'),
+                RobotoItalic: require('./assets/fonts/RobotoCondensed-LightItalic.ttf'),
             });
             setFontsLoaded(true);
         }

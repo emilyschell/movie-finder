@@ -4,6 +4,7 @@ import { View, Text, ActivityIndicator, ScrollView } from 'react-native';
 import { styles, colors } from '../assets/styles';
 import { API_KEY } from '@env';
 import PropTypes from 'prop-types';
+import MovieCard from './MovieCard';
 
 const ResultsView = ({ searchTerm }) => {
     const [loading, setLoading] = useState(true);
@@ -29,7 +30,7 @@ const ResultsView = ({ searchTerm }) => {
     }, [searchTerm]);
 
     let movieList = results.map((movie) => {
-        return <Text>{movie.title}</Text>;
+        return <MovieCard movie={movie} key={movie.id} />;
     });
 
     if (loading && searchTerm) {
@@ -41,14 +42,18 @@ const ResultsView = ({ searchTerm }) => {
     } else if (!loading && searchTerm && results.length === 0) {
         return (
             <View style={styles.container}>
-                <Text>
+                <Text style={[styles.defaultText, styles.notFoundText]}>
                     Sorry, no movies found for {searchTerm}. Please try a
                     different search.
                 </Text>
             </View>
         );
     } else if (!loading && searchTerm) {
-        return <ScrollView>{movieList}</ScrollView>;
+        return (
+            <ScrollView contentContainerStyle={styles.scrollView}>
+                {movieList}
+            </ScrollView>
+        );
     } else {
         return null;
     }
