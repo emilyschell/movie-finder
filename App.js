@@ -4,6 +4,7 @@ import { Text, View, Image, ActivityIndicator } from 'react-native';
 import { styles, colors } from './assets/styles';
 import TMDBLogo from './components/TMDB-Logo';
 import SearchBar from './components/SearchBar';
+import ResultsView from './components/ResultsView';
 
 const App = () => {
     const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -35,7 +36,7 @@ const App = () => {
                     <SearchBar
                         setSearchInput={(input) => setSearchInput(input)}
                     />
-                    <Text>{searchInput}</Text>
+                    <ResultsView searchTerm={searchInput} />
                 </View>
                 <View style={styles.footer}>
                     <TMDBLogo height={50} width={100} />
