@@ -1,9 +1,9 @@
-import { Image, Text, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import GoogleItButton from './GoogleItButton';
 import PropTypes from 'prop-types';
 import { styles } from '../assets/styles';
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, setModalShown, setSelectedMovie }) => {
     return (
         <View style={styles.movieCard}>
             <View style={styles.dataBlock1}>
@@ -15,24 +15,41 @@ const MovieCard = ({ movie }) => {
                     style={styles.poster}
                     defaultSource={require('../assets/images/fallback-image.jpg')}
                 />
-                <View style={{ flexDirection: 'column' }}>
-                    <Text style={[styles.defaultText, styles.title]}>
-                        {movie.title}
-                    </Text>
+                <View style={{ flexDirection: 'column', marginLeft: 5 }}>
+                    <TouchableOpacity
+                        onPress={() => {
+                            setSelectedMovie(movie);
+                            setModalShown(true);
+                        }}>
+                        <Text style={[styles.defaultText, styles.title]}>
+                            {movie.title}
+                        </Text>
+                    </TouchableOpacity>
                     <Text style={[styles.defaultText, styles.year]}>
-                        {movie.release_date.slice(0, 4)}
+                        {movie.release_date
+                            ? movie.release_date.slice(0, 4)
+                            : ''}
                     </Text>
                 </View>
             </View>
             <View style={styles.dataBlock2}>
-                <Text
-                    style={
-                        movie.vote_average < 5.0 && movie.vote_average > 0
-                            ? [styles.rating, styles.badRating]
-                            : [styles.rating]
-                    }>
-                    {movie.vote_average > 0 ? movie.vote_average : 'N/A'}
-                </Text>
+                <View
+                    style={{
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                    }}>
+                    <Text style={styles.ratingLabel}>Rating:</Text>
+                    <Text
+                        style={
+                            movie.vote_average < 5.0 && movie.vote_average > 0
+                                ? [styles.rating, styles.badRating]
+                                : [styles.rating]
+                        }>
+                        {movie.vote_average > 0
+                            ? movie.vote_average.toFixed(1)
+                            : 'N/A'}
+                    </Text>
+                </View>
                 <GoogleItButton
                     url={`https://www.google.com/search?q=${movie.title} movie`}
                 />
@@ -42,7 +59,9 @@ const MovieCard = ({ movie }) => {
 };
 
 MovieCard.propTypes = {
-    movie: PropTypes.object,
+    movie: PropTypes.object.isRequired,
+    setModalShown: PropTypes.func.isRequired,
+    setSelectedMovie: PropTypes.func.isRequired,
 };
 
 export default MovieCard;

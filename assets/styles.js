@@ -122,6 +122,11 @@ export const styles = StyleSheet.create({
         fontFamily: 'Roboto',
         fontSize: 30,
         margin: 15,
+        marginTop: 0,
+    },
+    ratingLabel: {
+        fontFamily: 'RobotoBold',
+        fontSize: 16,
     },
     badRating: {
         color: '#f00',
@@ -130,5 +135,14 @@ export const styles = StyleSheet.create({
         height: 75,
         margin: 5,
         width: 50,
+    },
+    modal: {
+        backgroundColor: '#fff',
+        borderColor: colors.borderColor,
+        borderRadius: 10,
+        borderWidth: 2,
+        maxHeight: 300,
+        padding: 10,
+        width: 300,
     },
 });

@@ -5,10 +5,13 @@ import { styles, colors } from '../assets/styles';
 import { API_KEY } from '@env';
 import PropTypes from 'prop-types';
 import MovieCard from './MovieCard';
+import DescriptionModal from './DescriptionModal';
 
 const ResultsView = ({ searchTerm }) => {
     const [loading, setLoading] = useState(true);
     const [results, setResults] = useState([]);
+    const [selectedMovie, setSelectedMovie] = useState('');
+    const [modalShown, setModalShown] = useState(false);
 
     const getMovies = async (searchTerm) => {
         if (!searchTerm) {
@@ -30,7 +33,14 @@ const ResultsView = ({ searchTerm }) => {
     }, [searchTerm]);
 
     let movieList = results.map((movie) => {
-        return <MovieCard movie={movie} key={movie.id} />;
+        return (
+            <MovieCard
+                movie={movie}
+                setModalShown={setModalShown}
+                setSelectedMovie={setSelectedMovie}
+                key={movie.id}
+            />
+        );
     });
 
     if (loading && searchTerm) {
@@ -50,9 +60,16 @@ const ResultsView = ({ searchTerm }) => {
         );
     } else if (!loading && searchTerm) {
         return (
-            <ScrollView contentContainerStyle={styles.scrollView}>
-                {movieList}
-            </ScrollView>
+            <>
+                <ScrollView contentContainerStyle={styles.scrollView}>
+                    {movieList}
+                </ScrollView>
+                <DescriptionModal
+                    movie={selectedMovie}
+                    modalShown={modalShown}
+                    onClose={() => setModalShown(false)}
+                />
+            </>
         );
     } else {
         return null;
@@ -60,7 +77,7 @@ const ResultsView = ({ searchTerm }) => {
 };
 
 ResultsView.propTypes = {
-    searchTerm: PropTypes.string,
+    searchTerm: PropTypes.string.isRequired,
 };
 
 export default ResultsView;
