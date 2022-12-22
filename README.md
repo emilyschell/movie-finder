@@ -68,3 +68,11 @@ Download Expo app to your device and [click here](https://expo.dev/@lauraemilysc
 5. Or simply download [Andriod Studio](https://developer.android.com/studio) or [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12) to have it running on an emulator/simulator on your laptop.
 6. Start server by running `expo start`.
 7. For testing on phone, scan the QR code that appears in the Expo metro bundler.
+*Note*: Having stored the API Key for TMDB as an .env variable for security purposes may affect the functioning of this app in different build environments. If cloning from GitHub, you will need to implement your own API key as a .env variable with key "API_KEY" for it to work.
+
+## Images
+All images used were publicly available under Creative Commons License:
+- [Google Logo](https://freesvg.org/1534129544)
+- [Fallback Image](https://creazilla.com/nodes/17357-cinema-penguin-clipart)
+- [Film Projector](https://freesvg.org/movie-projector-icon)
+- [TMDB Logo](https://www.themoviedb.org/about/logos-attribution)
