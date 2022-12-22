@@ -141,8 +141,16 @@ export const styles = StyleSheet.create({
         borderColor: colors.borderColor,
         borderRadius: 10,
         borderWidth: 2,
-        maxHeight: 300,
+        maxHeight: 500,
         padding: 10,
+        width: 350,
+    },
+    closeIcon: {
+        marginLeft: 290,
+    },
+    posterLarge: {
+        alignSelf: 'center',
+        height: 400,
         width: 300,
     },
 });

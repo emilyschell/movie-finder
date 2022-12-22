@@ -6,12 +6,14 @@ import { API_KEY } from '@env';
 import PropTypes from 'prop-types';
 import MovieCard from './MovieCard';
 import DescriptionModal from './DescriptionModal';
+import PosterModal from './PosterModal';
 
 const ResultsView = ({ searchTerm }) => {
     const [loading, setLoading] = useState(true);
     const [results, setResults] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState('');
-    const [modalShown, setModalShown] = useState(false);
+    const [descModalShown, setDescModalShown] = useState(false);
+    const [posterModalShown, setPosterModalShown] = useState(false);
 
     const getMovies = async (searchTerm) => {
         if (!searchTerm) {
@@ -36,7 +38,8 @@ const ResultsView = ({ searchTerm }) => {
         return (
             <MovieCard
                 movie={movie}
-                setModalShown={setModalShown}
+                setDescModalShown={setDescModalShown}
+                setPosterModalShown={setPosterModalShown}
                 setSelectedMovie={setSelectedMovie}
                 key={movie.id}
             />
@@ -66,8 +69,13 @@ const ResultsView = ({ searchTerm }) => {
                 </ScrollView>
                 <DescriptionModal
                     movie={selectedMovie}
-                    modalShown={modalShown}
-                    onClose={() => setModalShown(false)}
+                    modalShown={descModalShown}
+                    onClose={() => setDescModalShown(false)}
+                />
+                <PosterModal
+                    movie={selectedMovie}
+                    modalShown={posterModalShown}
+                    onClose={() => setPosterModalShown(false)}
                 />
             </>
         );

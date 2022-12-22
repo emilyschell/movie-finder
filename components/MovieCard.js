@@ -3,23 +3,34 @@ import GoogleItButton from './GoogleItButton';
 import PropTypes from 'prop-types';
 import { styles } from '../assets/styles';
 
-const MovieCard = ({ movie, setModalShown, setSelectedMovie }) => {
+const MovieCard = ({
+    movie,
+    setDescModalShown,
+    setPosterModalShown,
+    setSelectedMovie,
+}) => {
     return (
         <View style={styles.movieCard}>
             <View style={styles.dataBlock1}>
-                <Image
-                    source={{
-                        uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-                    }}
-                    resizeMode='contain'
-                    style={styles.poster}
-                    defaultSource={require('../assets/images/fallback-image.jpg')}
-                />
+                <TouchableOpacity
+                    onPress={() => {
+                        setPosterModalShown(true);
+                        setSelectedMovie(movie);
+                    }}>
+                    <Image
+                        source={{
+                            uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                        }}
+                        resizeMode='contain'
+                        style={styles.poster}
+                        defaultSource={require('../assets/images/fallback-image.jpg')}
+                    />
+                </TouchableOpacity>
                 <View style={{ flexDirection: 'column', marginLeft: 5 }}>
                     <TouchableOpacity
                         onPress={() => {
                             setSelectedMovie(movie);
-                            setModalShown(true);
+                            setDescModalShown(true);
                         }}>
                         <Text style={[styles.defaultText, styles.title]}>
                             {movie.title}
@@ -60,7 +71,8 @@ const MovieCard = ({ movie, setModalShown, setSelectedMovie }) => {
 
 MovieCard.propTypes = {
     movie: PropTypes.object.isRequired,
-    setModalShown: PropTypes.func.isRequired,
+    setDescModalShown: PropTypes.func.isRequired,
+    setPosterModalShown: PropTypes.func.isRequired,
     setSelectedMovie: PropTypes.func.isRequired,
 };
 

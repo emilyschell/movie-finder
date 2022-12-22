@@ -1,9 +1,9 @@
-import { Modal, View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { Modal, View, TouchableOpacity, Image } from 'react-native';
 import { styles, colors } from '../assets/styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import PropTypes from 'prop-types';
 
-const DescriptionModal = ({ modalShown, movie, onClose }) => {
+const PosterModal = ({ modalShown, movie, onClose }) => {
     return (
         <Modal visible={modalShown} transparent={true}>
             <View
@@ -27,22 +27,14 @@ const DescriptionModal = ({ modalShown, movie, onClose }) => {
                                 onPress={() => onClose()}
                             />
                         </TouchableOpacity>
-                        <ScrollView>
-                            <Text
-                                style={[
-                                    styles.defaultText,
-                                    {
-                                        fontFamily: 'RobotoBold',
-                                    },
-                                ]}>
-                                {movie.title}
-                            </Text>
-                            <Text style={styles.defaultText}>
-                                {movie.overview
-                                    ? movie.overview
-                                    : `Sorry, no description available for ${movie.title}`}
-                            </Text>
-                        </ScrollView>
+                        <Image
+                            source={{
+                                uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                            }}
+                            resizeMode='contain'
+                            style={styles.posterLarge}
+                            defaultSource={require('../assets/images/fallback-image.jpg')}
+                        />
                     </View>
                 </View>
             </View>
@@ -50,10 +42,10 @@ const DescriptionModal = ({ modalShown, movie, onClose }) => {
     );
 };
 
-DescriptionModal.propTypes = {
+PosterModal.propTypes = {
     modalShown: PropTypes.bool.isRequired,
     movie: PropTypes.object.isRequired,
     onClose: PropTypes.func.isRequired,
 };
 
-export default DescriptionModal;
+export default PosterModal;
