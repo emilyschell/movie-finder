@@ -51,7 +51,7 @@ const App = () => {
         );
     } else {
         return (
-            <View style={styles.container}>
+            <View style={[styles.container, { justifyContent: 'center' }]}>
                 <ActivityIndicator size='large' color={colors.iconColor} />
             </View>
         );

@@ -11,7 +11,7 @@ import PosterModal from './PosterModal';
 const ResultsView = ({ searchTerm }) => {
     const [loading, setLoading] = useState(true);
     const [results, setResults] = useState([]);
-    const [selectedMovie, setSelectedMovie] = useState('');
+    const [selectedMovie, setSelectedMovie] = useState({});
     const [descModalShown, setDescModalShown] = useState(false);
     const [posterModalShown, setPosterModalShown] = useState(false);
 
@@ -48,7 +48,7 @@ const ResultsView = ({ searchTerm }) => {
 
     if (loading && searchTerm) {
         return (
-            <View style={styles.container}>
+            <View style={[styles.container, { justifyContent: 'center' }]}>
                 <ActivityIndicator size='large' color={colors.iconColor} />
             </View>
         );
