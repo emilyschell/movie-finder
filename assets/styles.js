@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
     largeText: {
         color: colors.textColorDefault,
         fontFamily: 'Rubik',
-        fontSize: 50,
+        fontSize: 40,
     },
     headerImage: {
         margin: 0,
@@ -71,12 +71,9 @@ export const styles = StyleSheet.create({
     footerText: {
         color: colors.textColorFooter,
         fontFamily: 'Roboto',
-        fontSize: 16,
+        fontSize: 14,
         flex: 2,
         marginLeft: 25,
-    },
-    scrollView: {
-        width: 300,
     },
     movieCard: {
         alignItems: 'center',
@@ -87,16 +84,13 @@ export const styles = StyleSheet.create({
         width: 330,
     },
     googleLogo: {
-        alignSelf: 'flex-end',
         height: 40,
-        margin: 0,
-        padding: 0,
         width: 40,
     },
     defaultText: {
         color: colors.textColorDefault,
         fontFamily: 'Roboto',
-        fontSize: 24,
+        fontSize: 20,
     },
     dataBlock1: {
         alignItems: 'center',
